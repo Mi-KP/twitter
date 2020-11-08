@@ -1,0 +1,27 @@
+<div class="main users-index">
+  <div class="container">
+
+  <% @user.each do |user| %>
+    <div class="users-index-item">
+
+
+      <p>
+        <img 
+            src="<%= 
+                "/user_images/#{user.image_name}"
+              %>">
+        
+          <%= link_to(user.name,"/users/#{user.id}") %>
+      </p>
+      <div class="user-time">
+        <p>
+         <%= user.created_at %>
+        </p>
+      </div>
+
+      
+ 
+    </div>
+  <% end %>
+  </div>
+</div> 

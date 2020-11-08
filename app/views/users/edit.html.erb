@@ -1,0 +1,13 @@
+<div class="main posts-index">
+  <div class="container">
+      <%= form_tag("/users/#{@users.id}/update",{multipart:true}) do %>
+        <p>ユーザー名</P>
+          <input name="name" value= "<%= @users.name %>">
+        <p>画像</p>
+          <input name="image" type="file">
+        <p>メールアドレス</p>
+          <input name='email' value = "<%= @users.email %>">
+         <input type="submit" value="保存">
+      <% end %>
+  </div>
+</div> 

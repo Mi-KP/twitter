@@ -1,0 +1,29 @@
+<div class="main posts-index">
+  <div class="container">
+    <div class="user">
+      <img src=" <%= "/user_images/#{@user.image_name}" %> " >
+      <p>ユーザー名</p>
+      <p><%= @user.name %></P>
+          <p>メールアドレス</p>
+      <%= @user.email %>
+      <% if @current_user.id == @user.id %>
+      <%= link_to("編集","/users/#{@user.id}/edit") %>
+      <%= link_to("削除","/users/#{@user.id}/destroy",{method:"post"}) %>
+      <% end%>
+    </div>
+    <div>
+      <ul>
+        <li><%= link_to("投稿","/users/#{@user.id}") %></li>
+        <li><%= link_to("いいね！","/users/#{@user.id}/like") %></li>
+      <ul>
+    <div>
+      <% @user.likes.each do |like| %>
+      <div>
+        <% post = Post.find_by(id: like.post_id) %>
+        <%= post.content%>
+      </div>
+      <% end %>
+    </div>
+    
+  </div>
+</div> 

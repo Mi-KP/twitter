@@ -1,0 +1,21 @@
+<div class="main posts-index">
+  <div class="container">
+    <%= @post.content %>
+    <% if @like %>
+      <%= link_to("/like/#{@post.id}/destroy",{method:"post"}) do %>
+       <i class="fas fa-heart"></i>
+      <% end %>
+      <%= @likes %>
+    <% else %>
+        <%= link_to("/like/#{@post.id}/create",{method:"post"}) do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+      <%= @likes %>
+    <% end %>
+
+    <% if @current_user.id == @post.user_id %>
+    <%= link_to("編集","/posts/#{@post.id}/edit") %>
+    <%= link_to("削除","/posts/#{@post.id}/destroy",{method:"post"}) %>
+    <% end %>
+    </div>
+</div> 
