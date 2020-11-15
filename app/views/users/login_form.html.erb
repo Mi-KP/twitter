@@ -1,16 +1,20 @@
-<div class="main login_form">
-  <div class="container">
-    <div class="loginform">
-      <div class="loginmessage">
-          <%=@error_messages%>
+  <div class="main login_form">
+    <div class="container">
+      <div class="d-flex flex-row justify-content-center mt-5">
+        <div class="loginform">
+          <h1 class="h3 mb-4 font-weight-normal">サインインする</h1>
+          <%= form_tag("/login") do %>
+          <label for="inputEmail">メールアドレス</label>
+          <input name="email" value="<%= @user.email %>" id="inputEmail" class="form-control mb-3">
+          <label for="inputPassword">パスワード</label>
+          <input name="password" type="password" value="<%= @user.password %>" id="inputPassword" class="form-control">
+          <!-- ここからフラッシュ -->
+          <div class="text-danger small" style="width:200px">
+            <%= @error_messages %>
+          </div>
+          <!-- ここまでフラッシュ -->
+          <input type="submit" value="サインイン" class="btn btn-lg btn-primary btn-block mt-3">
+          <% end %>
+        </div>
       </div>
-      <%= form_tag("/login") do %>
-      <p>メールアドレス</p>
-      <input name="email" value="<%= @user.email %>" >
-      <p>パスワード</p>
-      <input name="password" type="password" value="<%= @user.password %>" >
-      <input type="submit" value="ログイン">
-      <% end %>
     </div>
-  </div>
-</div> 
