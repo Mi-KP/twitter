@@ -1,24 +1,29 @@
 <div class="main users-new">
   <div class="container">
-    <div class="sinki_toroku">
-    <h1 class="form-heading">
-      新規登録
-    </h1>
-    </div>
-    <% @user.errors.full_messages.each do |message| %>
-     <div class = "form_error_messages">
-      <%= message %>
-      </div>
-    <% end%>
+    <div class="d-flex flex-row justify-content-center mt-5">
+      <div class="users-new">
+        <%# ここからh1新規登録%>
+        <h1 class="h3 mb-4 font-weight-normal">新規登録</h1>
+        <%# ここまでh1新規登録%>
 
-      <%= form_tag("/users/create") do %>
-        <p>ユーザー名</P>
-          <input name="name" value= "<%= @user.name %>">
-        <p>メールアドレス</p>
-          <input name='email' value = "<%= @user.email %>">
-        <p>パスワード</p>
-          <input name='password' value = "<%= @user.password %>" type="password">
-        <input  class="btn btn-primary" type="submit" value="新規登録">
-      <% end %>
+        <%= form_tag("/users/create") do %>
+        <label for="username">ユーザー名</label>
+        <input name="name" value="<%= @user.name %>" id="username" class="form-control mb-3">
+        <label for="inputEmail">メールアドレス</label>
+        <input name="email" value="<%= @user.email %>" id="inputEmail" class="form-control mb-3">
+        <label for="inputPassword">パスワード</label>
+        <input name="password" type="password" value="<%= @user.password %>" id="inputPassword" class="form-control">
+
+        <%# ここからエラーメッセージ%>
+        <% @user.errors.full_messages.each do |message| %>
+        <div class="text-danger small" style="width:200px">
+          <%= message %>
+        </div>
+        <% end%>
+        <%# ここまでエラーメッセージ%>
+        <input type="submit" value="新規登録" class="btn btn-lg btn-primary btn-block mt-3">
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
