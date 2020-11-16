@@ -25,7 +25,7 @@ class UsersController < ApplicationController
             flash[:notice] = "ユーザーを登録しました"
             redirect_to("/users/index")
         else
-            flash[:notice] = @user.errors.full_messages
+            @user.errors.full_messages
             render("/users/new")
         end
     end
