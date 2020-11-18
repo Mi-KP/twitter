@@ -1,7 +1,9 @@
-<div class="main posts-index">
   <div class="container">
+
     <%# 1投稿毎に縦に並べる%>
-    <div class="d-flex flex-column align-items-left ml-5">
+
+    <div class="d-flex flex-column align-items-left ml-5 mt-5">
+
       <% @posts.each do |post| %>
       <%# 画像を左に、投稿を右に並べる%>
       <div class="d-flex flex-row align-items-center border">
@@ -10,8 +12,11 @@
         </div>
         <div class="d-flex flex-column justify-content-start">
           <div class="d-flex flex-row align-items-end">
-            <div><strong><%= link_to(post.user.name,"/users/#{post.user.id}", class: 'h5 mr-2 text-dark') %></strong></div>
-            <div class="small text-muted"><%= l post.created_at , format: :short %></div>
+            <div><b><%= link_to(post.user.name,"/users/#{post.user.id}", class: 'bold mr-2 text-dark') %></b>
+            </div>
+            <div class="small text-muted">
+              <<%= l post.created_at , format: :short %>>
+            </div>
           </div>
           <div>
             <%= link_to(post.content,"/posts/#{post.id}", class: 'text-dark') %>
@@ -23,34 +28,4 @@
     </div>
   </div>
 
-
-
-  <div class="main posts-index">
-    <div class="container">
-
-      <% @posts.each do |post| %>
-      <div class="row">
-        <div class="col-6">
-          <div class="left_image">
-            <img src="<%= "/user_images/#{post.user.image_name}" %>">
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="right_name">
-            <%= link_to(post.user.name,"/users/#{post.user.id}") %>
-          </div>
-          <p>
-            <%= link_to(post.content,"/posts/#{post.id}") %>
-          </p>
-
-          <div class="post-time">
-            <p>
-              <%= post.created_at %>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <% end %>
-    </div>
-  </div>
+</div>
