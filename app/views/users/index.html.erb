@@ -1,27 +1,16 @@
-<div class="main users-index">
-  <div class="container">
-
-  <% @user.each do |user| %>
-    <div class="users-index-item">
-
-
-      <p>
-        <img 
-            src="<%= 
-                "/user_images/#{user.image_name}"
-              %>">
-        
-          <%= link_to(user.name,"/users/#{user.id}") %>
-      </p>
-      <div class="user-time">
-        <p>
-         <%= user.created_at %>
-        </p>
+<div class="container">
+  <%# 1ユーザー毎に縦に並べる%>
+  <div class="d-flex flex-column align-items-left ml-5 mt-5">
+    <% @user.each do |user| %>
+    <%# 画像を左に、投稿を右に並べる%>
+    <div class="d-flex flex-row align-items-center border " style="height:68px">
+      <div class="m-2">
+        <%= link_to(image_tag("/user_images/#{user.image_name}", class: "rounded-circle img-thumbnail", style: "object-fit: cover; width: 50px ; height: 50px"),"/users/#{user.id}") %>
       </div>
-
-      
- 
+      <div class="d-flex flex-column justify-content-center h-75">
+          <b><%= link_to(user.name,"/users/#{user.id}", class: 'bold text-dark' ) %></b>
+      </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
-</div> 
+</div>
