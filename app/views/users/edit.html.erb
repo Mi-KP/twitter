@@ -1,13 +1,26 @@
 <div class="main posts-index">
   <div class="container">
-      <%= form_tag("/users/#{@users.id}/update",{multipart:true}) do %>
-        <p>ユーザー名</P>
-          <input name="name" value= "<%= @users.name %>">
-        <p>画像</p>
-          <input name="image" type="file">
-        <p>メールアドレス</p>
-          <input name='email' value = "<%= @users.email %>">
-         <input type="submit" value="保存">
-      <% end %>
+    <div class="d-flex flex-row justify-content-center mt-5">
+      <div class="loginform">
+        <h1 class="h3 mb-4 font-weight-normal">ユーザー情報編集</h1>
+
+        <div style="width:400px">
+          <%= form_tag("/users/#{@users.id}/update",{multipart:true}) do %>
+
+          <p>ユーザー名</P>
+          <input name="name" value="<%= @users.name %>" style="width:100%" class="form-control mb-4">
+          <p>画像</p>
+          <input name="image" type="file"  class="mb-4">
+          <p>メールアドレス</p>
+          <input name='email' value="<%= @users.email %>" style="width:100%" class="form-control mb-4">
+          <div class="d-flex flex-row justify-content-end">
+            <input type="submit" value="保存" class="btn btn-sm btn-primary btn-block mt-3" style="width:150px">
+          </div>
+          <% end %>
+
+
+        </div>
+      </div>
+    </div>
   </div>
-</div> 
+</div>
